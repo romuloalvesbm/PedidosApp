@@ -30,6 +30,5 @@ namespace PedidosApp.API.Controllers
         {
             return StatusCode(501); //Not Implemented
         }
-
     }
 }

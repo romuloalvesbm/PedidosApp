@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  Compilar:
     runs-on: windows-latest
     permissions:
       contents: read #This is required for actions/checkout
@@ -34,10 +34,17 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
-
-  deploy:
+ 
+  Testar:
     runs-on: windows-latest
-    needs: build
+    needs: Compilar
+    steps:
+    - name: Set up Tests
+      run: echo "Configurando o ambiente de testes"
+
+  Implantar:
+    runs-on: windows-latest
+    needs: Testar
     
     permissions:
       id-token: write #This is required for requesting the JWT
